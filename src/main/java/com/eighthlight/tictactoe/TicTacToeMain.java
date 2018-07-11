@@ -16,7 +16,7 @@ public class TicTacToeMain {
 			System.out.println("2. Hard .. The computer is smart!");
 			System.out.println("Choose 1 or 2 and press enter:");
 			int inputNumber = 0;
-			inputNumber = validateInput(scanner);			// Validate the user input.
+			inputNumber = TicTacToeHelper.validateInput(scanner);			// Validate the user input.
 			if(inputNumber == 1) {
 				new EasyTicTacToe();				// Easy Level
 			} else if (inputNumber == 2) {
@@ -24,35 +24,23 @@ public class TicTacToeMain {
 			} else {
 				continue;							// Wrong input!
 			}
-			while(true) {
+			while(!gameIsOver) {
 				System.out.println("Want to play again?");
 				System.out.println("1. Sure!");
 				System.out.println("2. Nah, I'm good for today");
 				System.out.println("Choose 1 or 2 and press enter:");
-				inputNumber = validateInput(scanner);		// Validate the user input.	
+				inputNumber = TicTacToeHelper.validateInput(scanner);		// Validate the user input.	
 				if(inputNumber == 1) {
 					break;
 				} else if (inputNumber == 2) {
 					gameIsOver = true;
 					System.out.println("Have a good day! and stay tuned for new difficulty levels!");
 					scanner.close();
-					break;
 				}
 			}
 		}
 	}
 
-	private static int validateInput(Scanner scanner) {
-		int inputNumber = 0;
-		try {
-			inputNumber = Integer.parseInt(scanner.nextLine());
-			if (inputNumber != 1 && inputNumber != 2) {
-				System.out.println("Invalid .. Choice again");
-			}
-		} catch (NumberFormatException e) {
-			System.out.println("Invalid number!");
-		}
-		return inputNumber;
-	}
+	
 
 }
