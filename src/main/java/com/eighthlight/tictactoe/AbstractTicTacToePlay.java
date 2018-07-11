@@ -158,8 +158,8 @@ public abstract class AbstractTicTacToePlay {
 	
 	protected int retrieveGameLead() {
 		while(true) {
-			System.out.println("Would you like to start?:");
-			System.out.println("========================");
+			System.out.println("Would you like to start? Starter will always be X !:");
+			System.out.println("===================================================");
 			System.out.println("1. Yes, I will go first this time!");
 			System.out.println("2. No, computer go first.");
 			System.out.println("Choose 1 or 2 and press enter:");
