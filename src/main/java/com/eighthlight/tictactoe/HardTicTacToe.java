@@ -28,7 +28,12 @@ public class HardTicTacToe extends AbstractTicTacToePlay {
 			makeSmartMove();
 		}	
 	}
-
+	
+	/**
+	* Method to find the direct action that should be taken.
+	* @param which action should this method check for(winning move, defense move or progressive move).
+	* @return true in case of an action has been taken or false in case of no action.
+	*/
 	private boolean findDirectAction(Action action) {
 		for (int i = 0; i < 8; i++) {
 			StringBuilder line = new StringBuilder();
@@ -102,6 +107,11 @@ public class HardTicTacToe extends AbstractTicTacToePlay {
 		return false;			
 	}
 
+	/**
+	* Method to find the first empty cell to make an action.
+	* @param the 3 cells to check for empty one.
+	* @return index of empty cell.
+	*/
 	private int findEmptyCell(int cell1, int cell2, int cell3) {
 		if(board[cell1] == ' ') {
 			return cell1;
@@ -112,6 +122,11 @@ public class HardTicTacToe extends AbstractTicTacToePlay {
 		}
 	}
 
+	/**
+	* Method to check if there's a direct action should be taken (winning move, defense move or progressive move).
+	* @param the line of 3 cells and the target action.
+	* @return true if action should be taken or not if no need for action
+	*/
 	private boolean isDirectActionNeeded(StringBuilder line, Action action) {
 		String lineString = line.toString();
 		lineString = lineString.replaceAll("\\s","");
@@ -135,6 +150,10 @@ public class HardTicTacToe extends AbstractTicTacToePlay {
 		return false;
 	}
 	
+	/**
+	* Method to make a smart move in case of no action has been taken. 
+	* Start with the middle cell then the 4 diagonals cells and then any of the 4 other cells
+	*/
 	private void makeSmartMove() {
 		if(board[4] == ' ') {				// Start with the middle cell
 			board[4] = computer;				

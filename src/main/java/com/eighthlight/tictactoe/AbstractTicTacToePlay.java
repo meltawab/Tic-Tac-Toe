@@ -2,6 +2,13 @@ package com.eighthlight.tictactoe;
 
 import java.util.Scanner;
 
+/**
+ * AbstractTicTacToePlay is an abstract class that can be extended into different
+ * difficulty levels in TicTacToe game program.
+ * @author Mohamed El-Tawab
+ * @version 1.0
+ */
+
 public abstract class AbstractTicTacToePlay {
 	protected char[] board;
 	protected char human;
@@ -23,7 +30,9 @@ public abstract class AbstractTicTacToePlay {
 	
 	protected abstract void computerPlay();
 
-	
+	/**
+	* Method to initialize the Tic-Tac-Toe board
+	*/	
 	private void initializeBoard() {
 		System.out.println("======================================");
 		System.out.println("**************************************");
@@ -33,13 +42,19 @@ public abstract class AbstractTicTacToePlay {
 		}
 	}
 	
-
+	/**
+	* Method to start the game
+	*/
 	protected void play() {
-		int choice = retrieveGameLead();
-		initializeGame(choice);
-		startGameLoop();
+		int choice = retrieveGameLead(); 	// Who would start the game
+		initializeGame(choice);				// Initialize the game according to the previous choice
+		startGameLoop();					// Start the game loop 
 	}
 
+	/**
+	* Method to initialize the game according to who will start.
+	* @param choice of user
+	*/
 	private void initializeGame(int choice) {
 		if (choice == 1){					// Human Starts
 			human = 'X';
@@ -52,9 +67,12 @@ public abstract class AbstractTicTacToePlay {
 		}
 	}
 
+	/**
+	* Method to start the game loop.
+	*/
 	private void startGameLoop() {
 		Player winner = null;
-		while(winner == null && turnCount < 9){			// No winner and not draw yet
+		while(winner == null && turnCount < 9){			// As no winner and not draw yet
 			if(turn == Player.HUMAN){
 				humanPlay();
 				turn = Player.COMPUTER;
@@ -68,6 +86,10 @@ public abstract class AbstractTicTacToePlay {
 		printResults(winner);
 	}
 
+	/**
+	* Method to print the results at the end
+	* @param winner of the game
+	*/
 	private void printResults(Player winner) {
 		System.out.println("#######################RESULT############################");
 		printBoard();
@@ -80,6 +102,10 @@ public abstract class AbstractTicTacToePlay {
 		}
 	}
 	
+	/**
+	* Method to check if there's any current winner
+	* @return a Player object with the winner! null in case of no winner yet
+	*/
 	private Player checkWinner() {
 		Player player = null;
 		for (int i = 0; i < 8; i++) {
@@ -127,12 +153,15 @@ public abstract class AbstractTicTacToePlay {
 		return player;
 	}
 
+	/**
+	* Method to add the user selection in the game
+	*/
 	private void humanPlay() {
 		printBoard();
 		System.out.println("It's Your turn!");
-		boolean invalidSelection = false;
+		boolean validSelection = false;
 		int input = 0;
-		while(!invalidSelection) {
+		while(!validSelection) {
 			try {
 				System.out.println("Choose from 1 - 9 the place you want to place your "+human );
 				input = Integer.parseInt(gameScanner.nextLine());
@@ -142,7 +171,7 @@ public abstract class AbstractTicTacToePlay {
 				} else {
 					if(board[input - 1] == ' ') {	 // Check for empty cell
 						board[input - 1] = human;
-						invalidSelection = true;
+						validSelection = true;
 					} else {
 						System.out.println("This is not an empty cell please try again!");
 					}
@@ -156,7 +185,11 @@ public abstract class AbstractTicTacToePlay {
 	}
 
 	
-	protected int retrieveGameLead() {
+	/**
+	* Method to check who will start the game.
+	* @return the selection of the user of who will start the game
+	*/
+	private int retrieveGameLead() {
 		while(true) {
 			System.out.println("Would you like to start? Starter will always be X !:");
 			System.out.println("===================================================");
@@ -171,6 +204,9 @@ public abstract class AbstractTicTacToePlay {
 		}
 	}
 
+	/**
+	* Method to print the board.
+	*/
 	protected void printBoard() {
 		System.out.println("|-1-|-2-|-3-|");
 		System.out.println("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");

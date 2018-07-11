@@ -2,8 +2,18 @@ package com.eighthlight.tictactoe;
 
 import java.util.Scanner;
 
+
+/**
+ * TicTacToeMain is the main class used to start your program.
+ * @author Mohamed El-Tawab
+ * @version 1.0
+ */
 public class TicTacToeMain {
 
+	/**
+	* main Method is called when you start the program Solution.
+	* @param args Arguments passed by the command Line as options required. 
+	*/
 	public static void main(String[] args) {
 		System.out.println("Welcome to Tic-Tac-Toe Game .. Enjoy it!");
 		System.out.println("++++++++++++++++++++++++++++++++++++++++");

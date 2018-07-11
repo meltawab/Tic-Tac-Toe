@@ -1,9 +1,19 @@
 package com.eighthlight.tictactoe;
-
 import java.util.Scanner;
 
+/**
+ * TicTacToeHelper is a helper class that contains static methods that could be 
+ * used in TicTacToe game program
+ * @author Mohamed El-Tawab
+ * @version 1.0
+ */
 public class TicTacToeHelper {
 
+	/**
+	* Method to validate the user input in case of 2 choices
+	* @param scanner to get the user input. 
+	* @return the input number.
+	*/
 	public static int validateInput(Scanner scanner) {
 		int inputNumber = 0;
 		try {
